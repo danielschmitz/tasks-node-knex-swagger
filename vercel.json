@@ -2,9 +2,9 @@
     "version": 2,
     "name": "nodejs",
     "builds": [
-      { "src": "index.js", "use": "@vercel/node" }
+      { "src": "src/index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/index.js" }
+      { "src": "/(.*)", "dest": "src/index.js" }
     ]
   }
