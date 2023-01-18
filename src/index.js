@@ -18,12 +18,6 @@ app.get('/', function (_req, res) {
 })
 
 //
-// public dir 
-// ex: localhost:3000/swagger-ui.css goes to src/public/swagger-ui.css
-//
-// app.use(express.static(__dirname + "/public/"));
-
-//
 // cors
 //
 const cors = require('cors')
