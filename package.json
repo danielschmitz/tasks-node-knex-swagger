@@ -1,0 +1,19 @@
+{
+  "name": "tasks-node-knex-swagger",
+  "version": "0.0.1",
+  "description": "A simple tasks API with nodejs, knex and swagger",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Daniel Schmitz",
+    "email": "danieljfa@gmail.com",
+    "url": "https://github.com/danielschmitz"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
