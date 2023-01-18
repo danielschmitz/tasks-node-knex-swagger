@@ -16,6 +16,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options))
 app.get('/', function (_req, res) {
     res.redirect('/api-docs')
 })
+
+//
+// public dir 
+// ex: localhost:3000/swagger-ui.css goes to src/public/swagger-ui.css
+//
 app.use(express.static(__dirname + "/public/"));
 
 //
