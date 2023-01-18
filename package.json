@@ -4,7 +4,8 @@
   "description": "A simple tasks API with nodejs, knex and swagger",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": {
