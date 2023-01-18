@@ -8,4 +8,13 @@ router.get('/hello-world', (req, res) => {
     res.send("hello world")
 })
 
+router.get('/hello-world-with-error', (req, res) => {
+    /* 
+    #swagger.tags = ['Hello World with error']
+    #swagger.summary = 'A simple Hello World message' 
+    */
+    throw new Error("Error at hello world")
+    res.send("hello world")
+})
+
 module.exports = router
