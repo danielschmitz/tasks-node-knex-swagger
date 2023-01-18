@@ -12,7 +12,7 @@ app.get('/', function (_req, res) {
     res.redirect('/api-docs')
 })
 
-app.use(express.static(__dirname + "/public/"));
+app.use('/api-docs/swagger-ui.css',express.static(__dirname + "/public/swagger-ui.css"));
 
 //
 // cors
