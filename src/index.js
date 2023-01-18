@@ -9,7 +9,7 @@ const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
 
 var options = {
-    customCssUrl: '/swagger-ui.css'
+    customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css'
   }
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options))
@@ -21,7 +21,7 @@ app.get('/', function (_req, res) {
 // public dir 
 // ex: localhost:3000/swagger-ui.css goes to src/public/swagger-ui.css
 //
-app.use(express.static(__dirname + "/public/"));
+// app.use(express.static(__dirname + "/public/"));
 
 //
 // cors
