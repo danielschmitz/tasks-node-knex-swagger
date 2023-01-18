@@ -5,7 +5,6 @@
       { "src": "src/index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "src/index.js" },
-      { "src": "/api-docs/swagger-ui.css", "dest": "/static/swagger-ui.css" }
+      { "src": "/(.*)", "dest": "src/index.js" }
     ]
   }

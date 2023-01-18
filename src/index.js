@@ -38,11 +38,6 @@ api.forEach(router => {
 })
 
 //
-// static folder
-//
-app.use('/static', express.static('static'))
-
-//
 // error handler
 //
 app.use(async (err, req, res, _next) => {
