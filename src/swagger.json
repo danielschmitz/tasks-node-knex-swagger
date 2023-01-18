@@ -53,6 +53,42 @@
           }
         }
       }
+    },
+    "/hello-world-test-joi": {
+      "post": {
+        "tags": [
+          "Test joi validation "
+        ],
+        "summary": "Test joi validaton object",
+        "description": "",
+        "parameters": [
+          {
+            "name": "test",
+            "in": "body",
+            "description": "Simple Data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SimpleData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SimpleData": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Simple data"
+        }
+      }
     }
   },
   "security": [

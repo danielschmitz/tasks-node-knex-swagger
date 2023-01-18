@@ -24,7 +24,9 @@ const doc = {
     },
     security: [{ bearerAuth: [] }],
     definitions: {
-
+        SimpleData: {
+            name: "Simple data",
+        },
     }
 }
 
