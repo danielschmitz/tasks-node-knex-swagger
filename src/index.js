@@ -12,6 +12,8 @@ app.get('/', function (_req, res) {
     res.redirect('/api-docs')
 })
 
+app.use(express.static(__dirname + "/public/"));
+
 //
 // cors
 //
