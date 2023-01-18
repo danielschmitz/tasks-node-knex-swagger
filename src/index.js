@@ -7,12 +7,16 @@ const app = express()
 //
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+var options = {
+    customCssUrl: '/swagger-ui.css'
+  }
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options))
 app.get('/', function (_req, res) {
     res.redirect('/api-docs')
 })
-
-app.use('/api-docs/swagger-ui.css',express.static(__dirname + "/public/swagger-ui.css"));
+app.use(express.static(__dirname + "/public/"));
 
 //
 // cors
