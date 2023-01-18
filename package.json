@@ -2,7 +2,7 @@
   "name": "tasks-node-knex-swagger",
   "version": "0.0.1",
   "description": "A simple tasks API with nodejs, knex and swagger",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
@@ -15,6 +15,23 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "eslint": "^8.32.0",
+    "nodemon": "^2.0.20",
+    "swagger-autogen": "^2.22.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.4.1",
+    "path": "^0.12.7",
+    "pg": "^8.8.0",
+    "sqlite3": "^5.1.4",
+    "swagger-ui-express": "^4.6.0"
   }
 }
