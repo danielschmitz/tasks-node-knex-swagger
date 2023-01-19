@@ -105,3 +105,6 @@ dist
 
 # sqlite3
 dev.sqlite3
+
+# Enviroment files
+.env
