@@ -33,6 +33,7 @@ const endpointsFiles = [
     './src/api/hello-world.js',
     './src/api/auth.js',
     './src/api/categories.js',
+    './src/api/tasks.js',
 ]
 
 swaggerAutogen(outputFile, endpointsFiles, doc)
