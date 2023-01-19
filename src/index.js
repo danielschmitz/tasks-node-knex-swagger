@@ -12,9 +12,9 @@ var options = {
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css'
   }
 
-app.use('/swaggerch', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options))
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options))
 app.get('/', function (_req, res) {
-    res.redirect('/swaggerch')
+    res.redirect('/swagger')
 })
 
 //
@@ -67,5 +67,5 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
     const yellow_color = "\x1b[33m%s\x1b[0m"
     console.log(yellow_color, `[Server Started with APIs: ${api_log}]`)
-    console.log(`Check docs at http://localhost:${port}/swaggerch`)
+    console.log(`Check docs at http://localhost:${port}/swagger`)
 })
