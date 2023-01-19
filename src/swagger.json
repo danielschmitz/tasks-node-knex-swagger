@@ -78,6 +78,55 @@
           }
         }
       }
+    },
+    "/hello-world-json": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Try to login",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User Login Data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user1@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "123456"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token"
+          },
+          "500": {
+            "description": "Incorrect password"
+          }
+        }
+      }
     }
   },
   "definitions": {
