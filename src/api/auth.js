@@ -40,20 +40,21 @@ router.post('/auth/login', async (req, res) => {
 
     const { email, password } = req.body
 
-    try {
-        await userSchema.validateAsync({ email, password })
-    } catch (error) {
-        throw new Error("invalid data")
+    const validateData = await userSchema.validateAsync({ email, password })
+    if (validateData.error) {
+        return res.status(500).json({
+            message: validateData.error.message
+        })        
     }
 
     const user = await db("users").where({ email }).first()
     if (!user) {
-        throw new Error("No user found with that email")
+        return res.status(500).json({ message: "No user found with that email" })
     }
 
-    const valid = await bcrypt.compare(password, user.password)
-    if (!valid) {
-        throw new Error("Incorrect password")
+    const validatePassword = await bcrypt.compare(password, user.password)
+    if (!validatePassword) {
+        return res.status(401).json({ message: "Incorrect password" })
     }
 
     const token = jsonwebtoken.sign(

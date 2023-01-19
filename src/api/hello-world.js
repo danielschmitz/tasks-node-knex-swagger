@@ -13,21 +13,25 @@ router.get('/hello-world', (req, res) => {
 router.get('/hello-world-with-error', (req, res) => {
     /* 
     #swagger.tags = ['Hello World']
-    #swagger.summary = 'A simple Hello World message' 
+    #swagger.summary = 'A simple Hello World message'
+    #swagger.responses[500] = { description: 'hello world error' }
     */
-    throw new Error("Error at hello world")
-    res.send("hello world")
+    return res.status(500).send({message:"hello world error"})    
 })
 
 router.post('/hello-world-test-joi', async (req, res) => {
     /* 
     #swagger.tags = ['Hello World']
     #swagger.summary = 'Test joi validaton object'
+    #swagger.responses[400] = { description: 'Data invalid' }
+    #swagger.responses[200] = { description: 'Data valid' }
     #swagger.parameters['test'] = {
         in: 'body',
         description: 'Simple Data',
         required: true,
-        schema: { $ref: "#/definitions/SimpleData" }
+        schema: { 
+            name: "Simple data"
+        }
     } 
     */    
     const schema = Joi.object({
@@ -36,12 +40,11 @@ router.post('/hello-world-test-joi', async (req, res) => {
             .max(10)
             .required()
     })
-    try {
-        await schema.validateAsync(req.body)
-    } catch (error) {
-        throw new Error(error.message)
+    const validation = schema.validate(req.body)
+    if (validation.error) {
+        return res.status(400).send({"message": validation.error})
     }
-    res.send("ok")
+    return res.send({"message": "ok"})
 })
 
 router.get('/hello-world-json', (req, res) => {

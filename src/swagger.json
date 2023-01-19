@@ -48,8 +48,8 @@
         "description": "",
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "OK"
+          "500": {
+            "description": "hello world error"
           }
         }
       }
@@ -68,13 +68,22 @@
             "description": "Simple Data",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/SimpleData"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Simple data"
+                }
+              }
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Data valid"
+          },
+          "400": {
+            "description": "Data invalid"
           }
         }
       }
@@ -126,6 +135,9 @@
           "200": {
             "description": "Token"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Incorrect password"
           }
@@ -150,20 +162,15 @@
           "200": {
             "description": "Token"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Authorization header is required"
           }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "SimpleData": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "example": "Simple data"
         }
       }
     }
