@@ -44,7 +44,12 @@ router.post('/hello-world-test-joi', async (req, res) => {
     res.send("ok")
 })
 
-
+/* get /hello-world-json retornando um "hello world json" em um formato json*/
+router.get('/hello-world-json', (req, res) => {
+    res.send({
+        message: 'hello world json'
+    })
+})
 
 
 module.exports = router
