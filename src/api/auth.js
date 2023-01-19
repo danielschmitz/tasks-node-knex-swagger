@@ -44,7 +44,7 @@ router.post('/auth/login', async (req, res) => {
     if (validateData.error) {
         return res.status(500).json({
             message: validateData.error.message
-        })        
+        })
     }
 
     const user = await db("users").where({ email }).first()
@@ -58,7 +58,11 @@ router.post('/auth/login', async (req, res) => {
     }
 
     const token = jsonwebtoken.sign(
-        { id: user.id, email: user.email },
+        {
+            id: user.id,
+            email: user.email,
+            name: user.name
+        },
         process.env.JWT_SECRET,
         {
             expiresIn: '1y'

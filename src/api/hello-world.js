@@ -7,7 +7,7 @@ router.get('/hello-world', (req, res) => {
     #swagger.tags = ['Hello World']
     #swagger.summary = 'A simple Hello World message' 
     */
-    res.send("hello world")
+    res.send('hello world')
 })
 
 router.get('/hello-world-with-error', (req, res) => {
@@ -16,7 +16,7 @@ router.get('/hello-world-with-error', (req, res) => {
     #swagger.summary = 'A simple Hello World message'
     #swagger.responses[500] = { description: 'hello world error' }
     */
-    return res.status(500).send({message:"hello world error"})    
+    return res.status(500).send({message:'hello world error'})    
 })
 
 router.post('/hello-world-test-joi', async (req, res) => {
