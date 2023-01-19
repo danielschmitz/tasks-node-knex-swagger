@@ -20,6 +20,20 @@ const taskSchema = Joi.object({
 router.get('/tasks', utils.checkLogin, async function (req, res, next) {
     /*
     #swagger.tags = ['Tasks']
+    #swagger.summary = '🔒️ Get undone tasks by logged user'
+    #swagger.responses[401] = { description: 'Unauthorized' }
+    #swagger.responses[500] = { description: 'Authorization header is required' }
+    #swagger.responses[200] = { description: "A list of tasks" }
+    */
+    const user_id = req.auth.id
+    const done = false
+    const tasks = await db('tasks').where({ user_id, done })
+    return res.json(tasks)
+})
+
+router.get('/tasks/all', utils.checkLogin, async function (req, res, next) {
+    /*
+    #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Get all tasks by logged user'
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
