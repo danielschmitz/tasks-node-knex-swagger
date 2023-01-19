@@ -12,7 +12,7 @@ router.get('/hello-world', (req, res) => {
 
 router.get('/hello-world-with-error', (req, res) => {
     /* 
-    #swagger.tags = ['Hello World with error']
+    #swagger.tags = ['Hello World']
     #swagger.summary = 'A simple Hello World message' 
     */
     throw new Error("Error at hello world")
@@ -21,7 +21,7 @@ router.get('/hello-world-with-error', (req, res) => {
 
 router.post('/hello-world-test-joi', async (req, res) => {
     /* 
-    #swagger.tags = ['Test joi validation ']
+    #swagger.tags = ['Hello World']
     #swagger.summary = 'Test joi validaton object'
     #swagger.parameters['test'] = {
         in: 'body',
@@ -44,8 +44,11 @@ router.post('/hello-world-test-joi', async (req, res) => {
     res.send("ok")
 })
 
-/* get /hello-world-json retornando um "hello world json" em um formato json*/
 router.get('/hello-world-json', (req, res) => {
+    /* 
+    #swagger.tags = ['Hello World']
+    #swagger.summary = 'hello world returning a json object'
+    */
     res.send({
         message: 'hello world json'
     })
