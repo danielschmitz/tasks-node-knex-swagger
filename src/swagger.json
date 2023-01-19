@@ -137,7 +137,7 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Check login",
+        "summary": "🔒️ Check login and return token info",
         "description": "",
         "parameters": [
           {

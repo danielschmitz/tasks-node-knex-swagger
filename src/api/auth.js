@@ -71,7 +71,7 @@ router.post('/auth/login', async (req, res) => {
 router.get('/checkLogin', utils.checkLogin, async (req, res) => {
     /* 
     #swagger.tags = ['Auth']
-    #swagger.summary = 'Check login'
+    #swagger.summary = '🔒️ Check login and return token info'
     #swagger.responses[500] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
     #swagger.responses[200] = { description: "Token" }
