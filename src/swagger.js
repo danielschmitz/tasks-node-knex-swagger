@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')()
 const doc = {
     info: {
         title: 'Tasks API',
-        description: 'Documentation API. https://github.com/danielschmitz/rtasks-node-knex-swagger <br/><br/> <strong>In the heroku deploy, you MUST use <u>HTTPS</u> scheme </strong>',
+        description: 'Documentation API. https://github.com/danielschmitz/rtasks-node-knex-swagger <br/><br/> <strong>In the production server, you MUST use <u>HTTPS</u> scheme </strong>',
         version: '0.1',
         contact: {
             name: 'Daniel Schmitz',
