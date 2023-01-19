@@ -1,3 +1,3 @@
 module.exports = [
-    'hello-world', 'auth'
+    'hello-world', 'auth', 'categories'
 ]
