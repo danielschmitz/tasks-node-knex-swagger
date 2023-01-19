@@ -1,7 +1,16 @@
 var express = require('express')
+const Joi = require('joi')
 const db = require('../db')
 const utils = require('../utils')
 var router = express.Router()
+
+
+const categorySchema = Joi.object({
+    name: Joi.string()
+        .min(3)
+        .max(30)
+        .required()
+})
 
 router.get('/categories', utils.checkLogin, async function (req, res, next) {
     /*
@@ -39,6 +48,7 @@ router.post('/categories', utils.checkLogin, async function (req, res, next) {
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
     #swagger.responses[409] = { description: 'Category already exists' }
+    #swagger.responses[403] = { description: 'Invalid Input' }
     #swagger.responses[201] = { description: "Category created" }
     #swagger.parameters['category'] = {
         in: 'body',
@@ -52,6 +62,12 @@ router.post('/categories', utils.checkLogin, async function (req, res, next) {
     const user_id = req.auth.id
     const name = req.body.name
 
+    const validateSchema = categorySchema.validate({name})
+    if (validateSchema.error) {
+        return res.status(403).json({ message: validateSchema.error.message })
+    }
+
+  
     // search category by name
     const existing_category = await db('categories').where({ name, user_id })
     if (existing_category.length > 0) {
@@ -86,6 +102,11 @@ router.put('/categories/:id', utils.checkLogin, async function (req, res, next) 
     const user_id = req.auth.id
     const name = req.body.name
     const id = req.params.id
+
+    const validateSchema = categorySchema.validate({name})
+    if (validateSchema.error) {
+        return res.status(403).json({ message: validateSchema.error.message })
+    }
 
     const category_exists = await db('categories').where({ id, user_id })
     if (!category_exists) {

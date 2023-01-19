@@ -32,7 +32,7 @@ router.post('/auth/login', async (req, res) => {
             "password": "123456"
         }
     } 
-    #swagger.responses[500] = { description: 'Invalid input' }
+    #swagger.responses[403] = { description: 'Invalid input' }
     #swagger.responses[500] = { description: 'No user found with that email' }
     #swagger.responses[500] = { description: 'Incorrect password' }
     #swagger.responses[200] = { description: "Token" }
@@ -40,9 +40,9 @@ router.post('/auth/login', async (req, res) => {
 
     const { email, password } = req.body
 
-    const validateData = await userSchema.validateAsync({ email, password })
+    const validateData = userSchema.validate({ email, password })
     if (validateData.error) {
-        return res.status(500).json({
+        return res.status(403).json({
             message: validateData.error.message
         })
     }

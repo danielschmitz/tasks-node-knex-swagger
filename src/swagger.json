@@ -138,6 +138,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "403": {
+            "description": "Invalid input"
+          },
           "500": {
             "description": "Incorrect password"
           }
@@ -244,8 +247,11 @@
           "401": {
             "description": "Unauthorized"
           },
+          "403": {
+            "description": "Invalid Input"
+          },
           "409": {
-            "description": "Conflict"
+            "description": "Category already exists"
           },
           "500": {
             "description": "Authorization header is required"
