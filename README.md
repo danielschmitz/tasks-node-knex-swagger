@@ -49,6 +49,15 @@ Copy the token, go to the top of the page, and click on the "Authorize" button.
 
 With this token, you can access other API calls, such as "/categories".
 
+## Database
+
+The database used in development mode is sqlite3. And in production, postgreSQL.
+
+<details>
+  <summary>ORM</summary>
+  <img src="Tasks.png">
+</details>
+
 ## Deploy
 
 TODO
