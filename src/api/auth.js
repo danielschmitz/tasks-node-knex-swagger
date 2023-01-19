@@ -7,6 +7,7 @@ const Joi = require('joi')
 const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
 const db = require("../db")
+const utils = require('../utils')
 
 const userSchema = Joi.object({
     password: Joi.string()
@@ -64,6 +65,20 @@ router.post('/auth/login', async (req, res) => {
     )
 
     res.status(200).json({ token })
+})
+
+
+router.get('/checkLogin', utils.checkLogin, async (req, res) => {
+    /* 
+    #swagger.tags = ['Auth']
+    #swagger.summary = 'Check login'
+    #swagger.responses[500] = { description: 'Unauthorized' }
+    #swagger.responses[500] = { description: 'Authorization header is required' }
+    #swagger.responses[200] = { description: "Token" }
+    */
+    return res.status(200).json({
+        token: req.auth
+    })
 })
 
 

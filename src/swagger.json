@@ -131,6 +131,30 @@
           }
         }
       }
+    },
+    "/checkLogin": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Check login",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token"
+          },
+          "500": {
+            "description": "Authorization header is required"
+          }
+        }
+      }
     }
   },
   "definitions": {
