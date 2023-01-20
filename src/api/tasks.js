@@ -23,7 +23,7 @@ router.get('/tasks', utils.checkLogin, async function (req, res, next) {
     #swagger.summary = '🔒️ Get undone tasks by logged user'
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
-    #swagger.responses[200] = { description: "A list of tasks" }
+    #swagger.responses[200] = { description: 'A list of tasks' }
     */
     const user_id = req.auth.id
     const done = false
@@ -37,7 +37,7 @@ router.get('/tasks/all', utils.checkLogin, async function (req, res, next) {
     #swagger.summary = '🔒️ Get all tasks by logged user'
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
-    #swagger.responses[200] = { description: "A list of tasks" }
+    #swagger.responses[200] = { description: 'A list of tasks' }
     */
     const user_id = req.auth.id
     const tasks = await db('tasks').where({ user_id })
@@ -50,7 +50,7 @@ router.get('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     #swagger.summary = '🔒️ Get a task by logged user'
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
-    #swagger.responses[200] = { description: "A task" }
+    #swagger.responses[200] = { description: 'A task' }
     */
     const user_id = req.auth.id
     const task = await db('tasks').where({ id: req.params.id, user_id })
@@ -68,16 +68,16 @@ router.post('/tasks', utils.checkLogin, async function (req, res, next) {
     #swagger.responses[500] = { description: 'Authorization header is required' }
     #swagger.responses[409] = { description: 'Task already exists' }
     #swagger.responses[403] = { description: 'Invalid Input' }
-    #swagger.responses[201] = { description: "Task created" }
+    #swagger.responses[201] = { description: 'Task created' }
     #swagger.parameters['task'] = {
         in: 'body',
         description: 'Task Data',
         required: true,
         schema: { 
-            "name": "Task name",
-            "description": "Task description",
-            "category_id": "Category id",
-            "done": "Task is done"
+            'name': 'Task name',
+            'description': 'Task description',
+            'category_id': 'Category id',
+            'done': 'Task is done'
         }
     } 
     */
@@ -106,7 +106,7 @@ router.post('/tasks', utils.checkLogin, async function (req, res, next) {
                 category_id,
                 done           
             })
-        .returning(['id','name','description','user_id','done'])
+        .returning(['id','name','description','user_id','category_id','done'])
 
     return res.json(task[0])
 })
@@ -118,16 +118,16 @@ router.put('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[404] = { description: 'Task not found' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
-    #swagger.responses[200] = { description: "Task updated" }
+    #swagger.responses[200] = { description: 'Task updated' }
     #swagger.parameters['task'] = {
         in: 'body',
         description: 'Task Data',
         required: true,
         schema: { 
-            "name": "Task name",
-            "description": "Task description",
-            "category_id": "Category id",
-            "done": "Task is done"
+            'name': 'Task name',
+            'description': 'Task description',
+            'category_id': 'Category id',
+            'done': 'Task is done'
         }
     } 
     */
@@ -154,6 +154,32 @@ router.put('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     return res.json(task[0])
 })
 
+router.put('/tasks/complete/:id', utils.checkLogin, async function (req, res, next) {
+    /*
+    #swagger.tags = ['Tasks']
+    #swagger.summary = '🔒️ Complete a task by logged user (set done = true)'
+    #swagger.responses[401] = { description: 'Unauthorized' }
+    #swagger.responses[404] = { description: 'Task not found' }
+    #swagger.responses[500] = { description: 'Authorization header is required' }
+    #swagger.responses[200] = { description: 'Task updated' }
+    */
+    const user_id = req.auth.id
+    const id = req.params.id
+
+    const task_exists = await db('tasks').where({ id, user_id })
+    if (!task_exists) {
+        return res.status(404).json({ message: 'Task not found' })
+    }
+
+    // update task
+    const task = await db('tasks')
+        .where({ id, user_id })
+        .update({ done: true })
+        .returning(['id','name','description','category_id','user_id', 'done'])
+
+    return res.json(task[0])
+})
+
 router.delete('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     /*
     #swagger.tags = ['Tasks']
@@ -161,7 +187,7 @@ router.delete('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     #swagger.responses[401] = { description: 'Unauthorized' }
     #swagger.responses[404] = { description: 'Task not found' }
     #swagger.responses[500] = { description: 'Authorization header is required' }
-    #swagger.responses[204] = { description: "Task deleted" }
+    #swagger.responses[204] = { description: 'Task deleted' }
     */
     const user_id = req.auth.id
     const id = req.params.id
