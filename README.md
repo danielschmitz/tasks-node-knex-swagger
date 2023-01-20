@@ -58,6 +58,31 @@ The database used in development mode is sqlite3. And in production, postgreSQL.
   <img src="Tasks.png">
 </details>
 
-## Deploy
+## Deploy at Vercel
 
-TODO
+We recomend vercel servers to deploy. The `vercel.json` is ready to use, you just need fork this project and create a vercel account at `vercel.com`. After create your account, link your vercel account with github and select the repository `tasks-node-knex-swagger`.
+
+<details>
+  <summary>Image</summary>
+  <img src="https://user-images.githubusercontent.com/1509692/213718163-8df36959-9cfd-4006-ab05-c7dfbc48f4cb.png">
+</details>
+
+
+You need a PostgreSQL database. We recommend https://www.elephantsql.com/ services (it's free for test). Create a account at elephantsql and create a new instance. Choose a "tiny turtle" free plan and copy the connection url:
+
+
+<details>
+  <summary>Image</summary>
+  <img src="https://user-images.githubusercontent.com/1509692/213721095-7e822e0e-7fc9-41bd-9c30-308df5ef5efd.png">
+</details>
+
+Back to vercel configuration, choose `Enviroment variables` and set two values:
+
+- JWT_SECRET: Use any string here. You can generate a string in the https://www.md5hashgenerator.com/
+- DATABASE_URL: Paste the URL copied from elephantsql.com
+
+<details>
+  <summary>Image</summary>
+  <img src="https://user-images.githubusercontent.com/1509692/213723090-78b0e883-5a09-4757-99e5-c0a4d23b5fce.png">
+</details>
+

@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.js",
     "swagger": "node src/swagger.js",
     "createdb": "knex migrate:rollback --all && knex migrate:latest && knex seed:run",
+    "createdb-production": "knex migrate:rollback --all --env production && migrate:latest --env production && knex seed:run --env production",
     "eslint": "npx eslint . --ext .js"
   },
   "keywords": [],
@@ -18,6 +19,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.22.0"
