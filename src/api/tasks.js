@@ -17,7 +17,7 @@ const taskSchema = Joi.object({
     Task_id: Joi.number(),
 })
 
-router.get('/tasks', utils.checkLogin, async function (req, res, next) {
+router.get('/tasks', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Get undone tasks by logged user'
@@ -31,7 +31,7 @@ router.get('/tasks', utils.checkLogin, async function (req, res, next) {
     return res.json(tasks)
 })
 
-router.get('/tasks/all', utils.checkLogin, async function (req, res, next) {
+router.get('/tasks/all', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Get all tasks by logged user'
@@ -44,7 +44,7 @@ router.get('/tasks/all', utils.checkLogin, async function (req, res, next) {
     return res.json(tasks)
 })
 
-router.get('/tasks/:id', utils.checkLogin, async function (req, res, next) {
+router.get('/tasks/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Get a task by logged user'
@@ -60,7 +60,7 @@ router.get('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     return res.json(task)
 })
 
-router.post('/tasks', utils.checkLogin, async function (req, res, next) {
+router.post('/tasks', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Create a task by logged user'
@@ -111,7 +111,7 @@ router.post('/tasks', utils.checkLogin, async function (req, res, next) {
     return res.json(task[0])
 })
 
-router.put('/tasks/:id', utils.checkLogin, async function (req, res, next) {
+router.put('/tasks/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Update a task by logged user'
@@ -154,7 +154,7 @@ router.put('/tasks/:id', utils.checkLogin, async function (req, res, next) {
     return res.json(task[0])
 })
 
-router.put('/tasks/complete/:id', utils.checkLogin, async function (req, res, next) {
+router.put('/tasks/complete/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Complete a task by logged user (set done = true)'
@@ -180,7 +180,7 @@ router.put('/tasks/complete/:id', utils.checkLogin, async function (req, res, ne
     return res.json(task[0])
 })
 
-router.delete('/tasks/:id', utils.checkLogin, async function (req, res, next) {
+router.delete('/tasks/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Tasks']
     #swagger.summary = '🔒️ Delete a task by logged user'

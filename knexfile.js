@@ -23,6 +23,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
+      // eslint-disable-next-line no-undef
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
     },
@@ -39,4 +40,4 @@ module.exports = {
     }
   }
 
-};
+}

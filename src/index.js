@@ -45,6 +45,7 @@ api.forEach(router => {
 //
 // start
 //
+// eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     const yellow_color = "\x1b[33m%s\x1b[0m"

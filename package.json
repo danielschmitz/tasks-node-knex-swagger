@@ -7,7 +7,8 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "swagger": "node src/swagger.js",
-    "createdb": "knex migrate:rollback --all && knex migrate:latest && knex seed:run"
+    "createdb": "knex migrate:rollback --all && knex migrate:latest && knex seed:run",
+    "eslint": "npx eslint . --ext .js"
   },
   "keywords": [],
   "author": {

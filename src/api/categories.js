@@ -12,7 +12,7 @@ const categorySchema = Joi.object({
         .required()
 })
 
-router.get('/categories', utils.checkLogin, async function (req, res, next) {
+router.get('/categories', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Categories']
     #swagger.summary = '🔒️ Get all categories by logged user'
@@ -25,7 +25,7 @@ router.get('/categories', utils.checkLogin, async function (req, res, next) {
     return res.json(categories)
 })
 
-router.get('/categories/:id', utils.checkLogin, async function (req, res, next) {
+router.get('/categories/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Categories']
     #swagger.summary = '🔒️ Get a category by logged user'
@@ -41,7 +41,7 @@ router.get('/categories/:id', utils.checkLogin, async function (req, res, next) 
     return res.json(category)
 })
 
-router.post('/categories', utils.checkLogin, async function (req, res, next) {
+router.post('/categories', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Categories']
     #swagger.summary = '🔒️ Create a category by logged user'
@@ -82,7 +82,7 @@ router.post('/categories', utils.checkLogin, async function (req, res, next) {
     return res.json(category[0])
 })
 
-router.put('/categories/:id', utils.checkLogin, async function (req, res, next) {
+router.put('/categories/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Categories']
     #swagger.summary = '🔒️ Update a category by logged user'
@@ -122,7 +122,7 @@ router.put('/categories/:id', utils.checkLogin, async function (req, res, next) 
     return res.json(category[0])
 })
 
-router.delete('/categories/:id', utils.checkLogin, async function (req, res, next) {
+router.delete('/categories/:id', utils.checkLogin, async function (req, res, _next) {
     /*
     #swagger.tags = ['Categories']
     #swagger.summary = '🔒️ Delete a category by logged user'

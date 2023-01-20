@@ -13,8 +13,7 @@ exports.up = function(knex) {
         table.foreign('category_id').references('id').inTable('categories')
         table.foreign('user_id').references('id').inTable('users')
     })
-
-};
+}
 
 /**
  * @param { import("knex").Knex } knex
@@ -22,4 +21,4 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
     return knex.schema.dropTable('tasks')  
-};
+}

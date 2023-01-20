@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 require('dotenv').config()
 
-const jwt = require("jsonwebtoken")
 const Joi = require('joi')
 const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
@@ -63,6 +62,7 @@ router.post('/auth/login', async (req, res) => {
             email: user.email,
             name: user.name
         },
+        // eslint-disable-next-line no-undef
         process.env.JWT_SECRET,
         {
             expiresIn: '1y'

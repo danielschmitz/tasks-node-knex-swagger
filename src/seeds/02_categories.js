@@ -12,5 +12,5 @@ exports.seed = async function(knex) {
     {id: 4, user_id: 2, name: 'Category 2.1'},
     {id: 5, user_id: 2, name: 'Category 2.2'},
     {id: 6, user_id: 2, name: 'Category 2.3'}  
-  ]);
-};
+  ])
+}
