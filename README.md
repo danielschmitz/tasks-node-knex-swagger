@@ -1,8 +1,6 @@
-# Tasks API (with nodejs, knex and swagger)
+# Tasks API (with nodejs, knex, swagger, JWT)
 
-A simple tasks api with nodejs, knex, joi and swagger
-
-Demo: TODO
+A simple tasks api with nodejs, knex, joi, jwt and swagger
 
 ## Install
 
@@ -15,7 +13,7 @@ $ npm run createdb
 $ npm run dev
 ```
 
-Go to http://localhost:3000
+Go to http://localhost:3000/swagger
 
 ## How get the Authorization Token 
 
@@ -61,3 +59,42 @@ The database used in development mode is sqlite3. And in production, postgreSQL.
 ## Deploy
 
 TODO
+
+## Important Files
+
+- `.env` Sets the JWT SECRET and the DATABASE_URL (in production mode)
+- `knexfile.js` Knex configuration https://knexjs.org/
+- `src/swagger.js` Swagger configuration. At the end of the file, in `endpointsFiles` the api files are added to swagger generate.
+- `src/api/` Contains the api, where each file is an api of a certain entity and in `index.js` those files are exported to node.
+
+## Migration and Seeds
+
+The migration CLI is bundled with the knex install, and is driven by the node-liftoff module. To install globally, run:
+
+```
+$ npm install knex -g
+``` 
+
+Creating new migration files can be achieved by running:
+
+```
+$ knex migrate:make migration_name
+```
+
+Once you have finished writing the migrations, you can update the database matching your NODE_ENV by running:
+
+```
+$ knex migrate:latest
+```
+
+To create a seed file, run:
+
+```
+$ knex seed:make seed_name
+```
+
+To run seed files, execute:
+
+```
+$ knex seed:run
+```
